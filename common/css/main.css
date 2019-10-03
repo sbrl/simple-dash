@@ -21,38 +21,51 @@ body {
 	display: grid;
 }
 #itemlist {
-	display: inline-grid;
-	grid-template-columns: repeat(2, 1fr);
+	display: inline-flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	
 	margin: auto;
+	max-width: 4em;
+	
+	border-radius: 6px;
+	background-color: rgba(0, 0, 0, 0.4);
+	font-size: 4em;
+	line-height: 1.25em;
+}
+#itemlist > * {
+	flex-basis: calc(50% - 30px);
+	
+	padding: 15px;
+	/* margin: 0 auto; */
 }
 @media only screen and (min-width: 600px) {
-	#itemlist {
-		grid-template-columns: repeat(3, 1fr);
+	#itemlist { max-width: 6em; }
+	#itemlist > * {
+		flex-basis: calc(33.333% - 30px); /* 3 items per row */
+		/* grid-template-columns: repeat(3, 1fr); */
 	}
 }
 @media only screen and (min-width: 800px) {
-	#itemlist {
-		grid-template-columns: repeat(6, 1fr);
+	#itemlist { max-width: 12em; }
+	#itemlist > * {
+		flex-basis: calc(16.666% - 30px); /* 6 items per row */
+		/* grid-template-columns: repeat(6, 1fr); */
 	}
 }
-
-#itemlist {
-	border-radius: 6px;
-	background-color: rgba(0, 0, 0, .4);
-	font-size: 4em;
-}
-#itemlist>* {
-	padding: 15px;
-	margin: 0 auto;
-}
-
-
-
 
 /* link colors */
 #itemlist a {
 	color: #fff;
+	text-align: center;
+	align-self: center;
+	
+	transition: color 0.25s;
 }
 #itemlist a:hover {
 	color: #c4c4c4;
+}
+#itemlist a:active { color: #aaaaaa; }
+#itemlist a span {
+	vertical-align: middle;
 }

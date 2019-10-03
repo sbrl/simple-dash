@@ -1,36 +1,71 @@
 "use strict";
+window.module = {}; // HACK: Get ion-parser to work without Rollup
 
 window.addEventListener("load", async (event) => {
-	let config = ION.parse(await fetch("config.toml"));
+	let response = await fetch("config.toml");
+	if(!response.ok) {
+		document.title = `Error: ${response.status} ${response.statusText}`;
+		throw new Error(document.title);
+	}
 	
+	let config = ION.parse(await response.text());
+	apply_config(config);
 });
 
-var request = new XMLHttpRequest();
-request.overrideMimeType("application/json");
-request.open("GET", 'config.json');
-request.onload = function () {
-	if (request.status >= 200 && request.status < 400) {
-		var config = JSON.parse(this.response);
-		console.log(config);
-		document.title = config.title;
-
-		var itemlistHTML = '';
-		for (var i = 0; i < config.items.length; i++) {
-			var item = config.items[i];
-			itemlistHTML += '<a href="'+item.link+'" title="'+item.alt+'"><i class="'+item.icon+' fa-fw"></i></a>';
-		}
-		document.getElementById("itemlist").innerHTML = itemlistHTML;
-	} else {
-		var error_text = "Error: "+request.status;
-		console.error(error_text);
-		document.title = error_text;
-	}
+function apply_config(config) {
+	console.log("Applying config", config);
+	document.title = config.title;
+	
+	document.getElementById("icon_link").href = config.favicon_url;
+	
+	apply_item_list(config);
+	apply_background(config);
 }
-request.send(null);
+
+function apply_item_list(config) {
+	let itemlist = document.getElementById("itemlist");
+	
+	// Clear out the old ones
+	for(let child of itemlist.children)
+		itemlist.removeChild(child);
+	
+	// Generate the new list
+	let fragment = document.createDocumentFragment();
+	for(let item of config.items) {
+		let item_html = document.createElement("a");
+		item_html.setAttribute("href", item.link);
+		item_html.setAttribute("title", item.label);
+		
+		let icon = document.createElement("span");
+		icon.classList.add("fa-fw", ...item.icon.split(" "));
+		item_html.appendChild(icon);
+		
+		fragment.appendChild(item_html);
+	}
+	itemlist.appendChild(fragment);
+}
+
+
+function apply_background(config) {
+	switch(config.background.mode) {
+		case "triangles":
+			addTriangleTo(homepage);
+			window.addEventListener("resize", triangle_handle_resize);
+			break;
+		
+		case "static":
+			document.body.style.backgroundImage = `url('${config.background.url}')`;
+			break;
+		
+		default:
+			alert(`Error: Unknown background mode ${config.background.mode}`);
+	}
+	
+}
 
 function addTriangleTo(target) {
-	var dimensions = target.getClientRects()[0];
-	var pattern = Trianglify({
+	let dimensions = target.getClientRects()[0];
+	let pattern = Trianglify({
 		width: dimensions.width,
 		height: dimensions.height
 	});
@@ -42,12 +77,9 @@ function addTriangleTo(target) {
 	target.style['-o-background-size'] = 'cover';
 }
 
-var resizeTimer;
-window.addEventListener("resize", function () {
-	clearTimeout(resizeTimer);
-	resizeTimer = setTimeout(function() {
+function triangle_handle_resize() {
+	clearTimeout(window.resizeTimer);
+	window.resizeTimer = setTimeout(function() {
 		addTriangleTo(homepage);
 	}, 400);
-})
-
-addTriangleTo(homepage);
+}

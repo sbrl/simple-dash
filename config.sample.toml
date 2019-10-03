@@ -1,23 +1,35 @@
 # The title of your homepage
 title = "Your Homepage Title"
+favicon_url = "./favicon.ico"
 
-# The background for your page.
-background = "triangles"
+[background]
+# The type of background for your homepage
+# Mode			| Result
+# --------------|--------------------
+# triangles		| Random triangles
+# static		| Static background image
+mode = "triangles"
+
+# If background.mode is set to static, this sets the background URL.
+# Defaults to a random image from the "Undisturbed Pattern Wallpapers" 
+# Unsplash collection.
+# Has no effect if background_mode isn't set to static.
+url = "https://source.unsplash.com/collection/151521/1920x1080"
 
 
 # Items that should appear on your homepage
 
 [[items]]
-alt = "GitHub"
+label = "GitHub"
 icon = "fab fa-github"
 link = "https://github.com/Swagielka"
 
 [[items]]
-alt = "Twitter"
+label = "Twitter"
 icon = "fab fa-twitter"
 link = "https://twitter.com/Kukielka_"
 
 [[items]]
-alt = "Docker Hub"
+label = "Docker Hub"
 icon = "fab fa-docker"
 link = "https://hub.docker.com/u/kukielka/"
