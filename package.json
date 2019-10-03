@@ -1,0 +1,25 @@
+{
+  "name": "simple-dash",
+  "version": "1.0.0",
+  "description": "[![Mentioned in Awesome-Selfhosted](https://awesome.re/mentioned-badge.svg)](https://github.com/Kickball/awesome-selfhosted#personal-dashboards) # simple-dash",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sbrl/simple-dash.git"
+  },
+  "author": [
+    "Starbeamrainbowlabs",
+    "kutyla-philipp"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sbrl/simple-dash/issues"
+  },
+  "homepage": "https://github.com/sbrl/simple-dash#readme",
+  "dependencies": {
+    "ion-parser": "^0.5.2"
+  }
+}
