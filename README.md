@@ -12,12 +12,21 @@ This project uses:
 - Font Awesome
 - Trianglify
 
+This is a fork with several improvements over @swagielka's original version:
+
+ - Static background support
+ - [TOML](https://github.com/toml-lang/toml) configuration file
+ - Removed excess horizontal space on pages with small numbers of icons
+
 ## Screenshots
 ![Homepage Desktop](example_img/homepage-desktop.jpg?raw=true)
 ![Homepage Mobile](example_img/homepage-mobile.jpg?raw=true)
 
 ## To Use
-Copy the config.sample.json file and rename to config.json. Be sure to update the fields as you see appropriate.
+1. Clone this repository with git.
+2. Copy the `config.sample.toml` file to `config.toml`. Update the fields as appropriate to configure your homepage.
+3. Run `npm install` in the root of this repository.
+4. Open `index.html` in your browser!
 
 ## Configure Homepage
 - 'items' => The menu will scale to the amount of items you want to display. Insert any link you'd like, or {{cur}} for the current URL of the page. Choose icons from [Font Awesome](http://fontawesome.io/icons/)
