@@ -21,11 +21,14 @@ body {
 	display: grid;
 }
 #itemlist {
+	justify-self: center;
+	align-self: center;
+	
 	display: inline-flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	
-	margin: auto;
+	margin: 0.1em;
 	max-width: 4em;
 	
 	border-radius: 6px;
