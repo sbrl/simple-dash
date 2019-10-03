@@ -1,0 +1,23 @@
+# The title of your homepage
+title = "Your Homepage Title"
+
+# The background for your page.
+background = "triangles"
+
+
+# Items that should appear on your homepage
+
+[[items]]
+alt = "GitHub"
+icon = "fab fa-github"
+link = "https://github.com/Swagielka"
+
+[[items]]
+alt = "Twitter"
+icon = "fab fa-twitter"
+link = "https://twitter.com/Kukielka_"
+
+[[items]]
+alt = "Docker Hub"
+icon = "fab fa-docker"
+link = "https://hub.docker.com/u/kukielka/"
