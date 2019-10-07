@@ -19,6 +19,7 @@ url = "https://source.unsplash.com/collection/137627/1920x1080"
 
 # Items that should appear on your homepage
 # See https://fontawesome.com/icons?d=gallery&m=free for a reference of supported Icons
+# TODO: Add ForkAwesome and image support here.
 
 [[items]]
 label = "GitHub"
