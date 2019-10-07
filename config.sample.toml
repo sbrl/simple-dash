@@ -35,3 +35,15 @@ link = "https://twitter.com/Kukielka_"
 label = "Docker Hub"
 icon = "fab fa-docker"
 link = "https://hub.docker.com/u/kukielka/"
+
+[[items]]
+# The text to show on hover.
+label = "Starbeamrainbowlabs"
+# Optional. Defines the kind of icon to display. Supported values:
+# fontawesome		The default. The value of icon should be the classes of a FontAwesome icon.
+# image				The value of icon should be the URL of a static image to display.
+icon_mode = "image"
+# The icon to display. The exact value depends on the value of icon_mode. 
+icon = "https://starbeamrainbowlabs.com/images/sbrl/SBRL-Large-620.png"
+# The link to send users to when the icon is clicked.
+link = "https://starbeamrainbowlabs.com/"

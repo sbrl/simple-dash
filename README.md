@@ -4,7 +4,7 @@
 Try the Demo here: https://swagielka.github.io/simple-dash/
 
 A simple, fully responsive Dashboard to forward to the services of your choice! Ideal for Desktop and mobile usage!
-Add all of your services, whether you host them yourself or not and display them as neat Icons from the FontAwesome libary.
+Add all of your services, whether you host them yourself or not and display them as neat Icons from the Font Awesome library.
 simple-dash is made to be as simple and minimalistic as possible. (The goal was to create a dashboard even my mom could use!) :)
 Based on: https://github.com/thetomester13/homepage
 
@@ -12,9 +12,10 @@ This project uses:
 - Font Awesome
 - Trianglify
 
-This is a fork with several improvements over @swagielka's original version:
+This is a fork by @sbrl with several improvements over @swagielka's original version:
 
  - Static background support
+ - Icon image URL support
  - [TOML](https://github.com/toml-lang/toml) configuration file
  - Removed excess horizontal space on pages with small numbers of icons
 

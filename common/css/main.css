@@ -42,6 +42,8 @@ body {
 	
 	padding: 15px;
 	/* margin: 0 auto; */
+	
+	vertical-align: middle;
 }
 @media only screen and (min-width: 600px) {
 	#itemlist { max-width: 6em; }
@@ -70,6 +72,7 @@ body {
 	color: #c4c4c4;
 }
 #itemlist a:active { color: #aaaaaa; }
-#itemlist a span {
-	vertical-align: middle;
+#itemlist a img {
+	max-width: 1em;
+	max-height: 1em;
 }

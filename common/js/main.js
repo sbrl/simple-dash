@@ -31,18 +31,36 @@ function apply_item_list(config) {
 	
 	// Generate the new list
 	let fragment = document.createDocumentFragment();
-	for(let item of config.items) {
-		let item_html = document.createElement("a");
-		item_html.setAttribute("href", item.link);
-		item_html.setAttribute("title", item.label);
+	for(let item_spec of config.items) {
 		
-		let icon = document.createElement("span");
-		icon.classList.add("fa-fw", ...item.icon.split(" "));
-		item_html.appendChild(icon);
-		
-		fragment.appendChild(item_html);
+		fragment.appendChild(create_item(item_spec));
 	}
 	itemlist.appendChild(fragment);
+}
+
+function create_item(item_spec) {
+	// Create the hyperlink
+	let item_html = document.createElement("a");
+	item_html.setAttribute("href", item_spec.link);
+	item_html.setAttribute("title", item_spec.label);
+	
+	// Render the icon
+	let icon_mode = item_spec.icon_mode || "fontawesome";
+	let icon = null;
+	switch(icon_mode) {
+		case "fontawesome":
+			icon = document.createElement("span");
+			icon.classList.add("fa-fw", ...item_spec.icon.split(" "));
+			break;
+		case "image":
+			icon = document.createElement("img");
+			icon.src = item_spec.icon;
+			break;
+	}
+	
+	// Put it all together and return it
+	item_html.appendChild(icon);
+	return item_html;
 }
 
 
