@@ -1,14 +1,15 @@
 "use strict";
-window.module = {}; // HACK: Get ion-parser to work without Rollup
-
+// HACK: Extract the TOML parser from fast-toml sinceit's not es6 module compatible
+window.module = {};
 window.addEventListener("load", async (event) => {
+	window.TOML = window.module.exports;
 	let response = await fetch("config.toml");
 	if(!response.ok) {
 		document.title = `Error: ${response.status} ${response.statusText}`;
 		throw new Error(document.title);
 	}
 	
-	let config = ION.parse(await response.text());
+	let config = TOML.parse(await response.text());
 	apply_config(config);
 });
 
@@ -23,19 +24,41 @@ function apply_config(config) {
 }
 
 function apply_item_list(config) {
-	let itemlist = document.getElementById("itemlist");
+	let itemlist = document.querySelector(".itemlist");
 	
 	// Clear out the old ones
 	for(let child of itemlist.children)
 		itemlist.removeChild(child);
 	
 	// Generate the new list
+	if(typeof config.folders !== "undefined")
+		itemlist.appendChild(create_folder_list(config.folders));
+	if(typeof config.items !== "undefined")
+		itemlist.appendChild(create_item_list(config.items));
+}
+
+function create_folder_list(folders) {
+	let result = document.createDocumentFragment();
+	for(let folder of folders) {
+		result.appendChild(create_folder(folder));
+	}
+	return result;
+}
+
+function create_folder(folder) {
+	let result = document.createElement("span");
+	result.classList.add("folder");
+	if(typeof folder.items !== "undefined")
+		result.appendChild(create_item_list(folder.items));
+	return result;
+}
+
+function create_item_list(items) {
 	let fragment = document.createDocumentFragment();
-	for(let item_spec of config.items) {
-		
+	for(let item_spec of items) {
 		fragment.appendChild(create_item(item_spec));
 	}
-	itemlist.appendChild(fragment);
+	return fragment;
 }
 
 function create_item(item_spec) {

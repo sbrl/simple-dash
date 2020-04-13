@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/sbrl/simple-dash#readme",
   "dependencies": {
-    "ion-parser": "^0.5.2"
+    "fast-toml": "^0.5.4"
   }
 }

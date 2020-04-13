@@ -47,3 +47,6 @@ icon_mode = "image"
 icon = "https://starbeamrainbowlabs.com/images/sbrl/SBRL-Large-620.png"
 # The link to send users to when the icon is clicked.
 link = "https://starbeamrainbowlabs.com/"
+
+
+# Example of a folder:
