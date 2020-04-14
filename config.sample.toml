@@ -50,3 +50,39 @@ link = "https://starbeamrainbowlabs.com/"
 
 
 # Example of a folder:
+
+[[folders]]
+# Currently name and folders.background don't do anything yet
+name = "Websites"
+	[folders.background]
+	mode = "static"
+	url = "https://source.unsplash.com/collection/137627/1920x1080"
+
+	[[folders.items]]
+	label = "GitHub"
+	icon = "fab fa-github"
+	link = "https://github.com/Swagielka"
+
+	[[folders.items]]
+	label = "Twitter"
+	icon = "fab fa-twitter"
+	link = "https://twitter.com/Kukielka_"
+
+	[[folders.items]]
+	label = "Docker Hub"
+	icon = "fab fa-docker"
+	link = "https://hub.docker.com/u/kukielka/"
+
+	[[folders.items]]
+	label = "Docker Hub"
+	# icon = "fab fa-docker"
+	icon_mode = "image"
+	icon = "https://starbeamrainbowlabs.com/images/logos/docker.png"
+	link = "https://hub.docker.com/u/kukielka/"
+
+	[[folders.items]]
+	label = "Docker Hub"
+	# icon = "fab fa-docker"
+	icon_mode = "image"
+	icon = "https://starbeamrainbowlabs.com/images/logos/docker.png"
+	link = "https://hub.docker.com/u/kukielka/"
