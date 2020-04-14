@@ -30,7 +30,7 @@ body {
 	display: grid;
 	place-items: center center;
 }
-.itemlist {
+.itemlist, .folder.active > span {
 	/* place-content: center center; */
 	/* justify-self: center;
 	align-self: center; */
@@ -47,7 +47,7 @@ body {
 	font-size: 4em;
 	line-height: 1.25em;
 }
-.itemlist > * {
+.itemlist > *, .folder.active > span > * {
 	flex-basis: calc(50% - 30px);
 	
 	
@@ -56,15 +56,15 @@ body {
 	vertical-align: middle;
 }
 @media only screen and (min-width: 600px) {
-	.itemlist { max-width: 6em; }
-	.itemlist > * {
+	.itemlist, .folder.active > span { max-width: 6em; }
+	.itemlist > *, .folder.active > span > * {
 		flex-basis: calc(33.333% - 30px); /* 3 items per row */
 		/* grid-template-columns: repeat(3, 1fr); */
 	}
 }
 @media only screen and (min-width: 800px) {
-	.itemlist { max-width: 12em; }
-	.itemlist > * {
+	.itemlist, .folder.active > span { max-width: 12em; }
+	.itemlist > *, .folder.active > span > * {
 		flex-basis: calc(16.666% - 30px); /* 6 items per row */
 		/* grid-template-columns: repeat(6, 1fr); */
 	}
@@ -79,7 +79,7 @@ body {
 	
 	transition: color 0.25s;
 }
-.itemlist > a:hover, .folder.active a:hover {
+.itemlist > a:hover, .folder.active > span > a:hover {
 	color: var(--icon-hover);
 }
 .itemlist > a:active,
@@ -113,7 +113,7 @@ body {
 	transition: all 0.25s;
 }
 
-.folder > span > a	{ padding: 0;	}
+.folder:not(.active) > span > a	{ padding: 0;	}
 .folder > span > a:only-child {
 	grid-row: 1 / span 2;
 	grid-column: 1 / span 2;
@@ -130,6 +130,10 @@ body {
 }
 .folder.active > span {
 	padding: 0.5em;
+	
+	
+	grid-template: auto / repeat(6, 1fr);
+	
 	font-size: 1.25em;
 	line-height: 1.25em;
 }

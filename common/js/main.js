@@ -48,9 +48,10 @@ function create_folder_list(folders) {
 function create_folder(folder) {
 	let result = document.createElement("span");
 	result.classList.add("folder");
-	result.addEventListener("click", handle_folder_click);
+	result.addEventListener("click", handle_folder_click, { capture: true, passive: false });
 	let container = document.createElement("span");
 	result.appendChild(container);
+	container.addEventListener("click", handle_folder_click, { capture: true, passive: false });
 	if(typeof folder.items !== "undefined")
 		container.appendChild(create_item_list(folder.items));
 	return result;
@@ -129,9 +130,11 @@ function triangle_handle_resize() {
 }
 
 function handle_folder_click(event) {
+	console.log(`[folder_click] begin`);
 	let target = event.target.closest(".folder");
 	let contains = target.classList.contains("active");
 	target.classList.toggle("active");
+	console.log(`[${new Date()}] [folder_click] new contains: ${contains}, target:`, target);
 	if(!contains) {
 		event.stopPropagation();
 		event.preventDefault();
