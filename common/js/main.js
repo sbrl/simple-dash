@@ -48,6 +48,7 @@ function create_folder_list(folders) {
 function create_folder(folder) {
 	let result = document.createElement("span");
 	result.classList.add("folder");
+	result.addEventListener("click", handle_folder_click);
 	if(typeof folder.items !== "undefined")
 		result.appendChild(create_item_list(folder.items));
 	return result;
@@ -123,4 +124,8 @@ function triangle_handle_resize() {
 	window.resizeTimer = setTimeout(function() {
 		addTriangleTo(homepage);
 	}, 400);
+}
+
+function handle_folder_click(event) {
+	event.target.classList.toggle("active");
 }
