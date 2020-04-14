@@ -79,14 +79,16 @@ body {
 	
 	transition: color 0.25s;
 }
-.itemlist a:hover {
+.itemlist > a:hover, .folder.active a:hover {
 	color: var(--icon-hover);
 }
-.itemlist a:active { color: var(--icon-active); }
+.itemlist > a:active,
+ 	.folder.active a:active	{ color: var(--icon-active); }
 .itemlist a img {
 	max-width: 1em;
 	max-height: 1em;
 }
+
 
 .folder {
 	margin: 0.25em;
