@@ -49,8 +49,10 @@ function create_folder(folder) {
 	let result = document.createElement("span");
 	result.classList.add("folder");
 	result.addEventListener("click", handle_folder_click);
+	let container = document.createElement("span");
+	result.appendChild(container);
 	if(typeof folder.items !== "undefined")
-		result.appendChild(create_item_list(folder.items));
+		container.appendChild(create_item_list(folder.items));
 	return result;
 }
 
@@ -127,5 +129,12 @@ function triangle_handle_resize() {
 }
 
 function handle_folder_click(event) {
-	event.target.classList.toggle("active");
+	let target = event.target.closest(".folder");
+	let contains = target.classList.contains("active");
+	target.classList.toggle("active");
+	if(!contains) {
+		event.stopPropagation();
+		event.preventDefault();
+		return false;
+	}
 }
