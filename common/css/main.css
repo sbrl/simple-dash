@@ -3,6 +3,10 @@
 	--icon-normal: #fff;
 	--icon-hover: #c4c4c4;
 	--icon-active: #aaaaaa;
+	
+	--img-opacity-normal: 1;
+	--img-opacity-hover: 0.8;
+	--img-opacity-active: 0.6;
 }
 
 html, body {
@@ -82,11 +86,18 @@ body {
 .itemlist > a:hover, .folder.active > span > a:hover {
 	color: var(--icon-hover);
 }
+.itemlist > a:hover img, .folder.active > span > a:hover img {
+	opacity: var(--img-opacity-hover);
+}
 .itemlist > a:active,
- 	.folder.active a:active	{ color: var(--icon-active); }
+.folder.active a:active	{ color: var(--icon-active); }
+.itemlist > a:active img, .folder.active > span > a:active img {
+	opacity: var(--img-opacity-active);
+}
 .itemlist a img {
 	max-width: 1em;
 	max-height: 1em;
+	opacity: var(--img-opacity-normal);
 }
 
 
