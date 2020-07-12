@@ -104,7 +104,7 @@ body {
 
 .folder {
 	margin: 0.25em;
-	transition: all 0.5s;
+	transition: background 0.5s;
 }
 
 .folder > span {
