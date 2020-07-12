@@ -131,6 +131,10 @@ function triangle_handle_resize() {
 
 function handle_folder_click(event) {
 	console.log(`[folder_click] begin`);
+	if([ "a", "img" ].includes(event.target.nodeName.toLowerCase()) || event.target.parentElement.nodeName.toLowerCase() == "a") {
+		console.log(`[folder_click] it's a link`);
+		return;
+	}
 	let target = event.target.closest(".folder");
 	let contains = target.classList.contains("active");
 	target.classList.toggle("active");
