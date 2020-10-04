@@ -99,7 +99,10 @@ function apply_background(config) {
 			break;
 		
 		case "static":
-			document.body.style.backgroundImage = `url('${config.background.url}')`;
+			let bg_url = config.background.url;
+			if(bg_url instanceof Array)
+				bg_url = bg_url[Math.floor(Math.random() * bg_url.length)];
+			document.body.style.backgroundImage = `url('${bg_url}')`;
 			break;
 		
 		default:

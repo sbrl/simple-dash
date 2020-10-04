@@ -14,6 +14,7 @@ mode = "triangles"
 # Defaults to a random image from the "calm wallpapers" 
 # Unsplash collection.
 # Has no effect if background_mode isn't set to static.
+# May also be an array of URLs - 1 will be picked at random from the list.
 url = "https://source.unsplash.com/collection/137627/1920x1080"
 
 
