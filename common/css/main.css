@@ -126,7 +126,7 @@ body {
 	transition: all 0.25s;
 }
 
-.folder h2 { grid-area: title; margin: 0.5em; mix-blend-mode: difference; }
+.folder h2 { grid-area: title; margin: 0.5em; }
 .folder:not(.active) h2 { display: none; }
 .folder:not(.active) > span > a	{ padding: 0;	}
 .folder > span > a:only-child {
