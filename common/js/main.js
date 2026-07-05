@@ -49,8 +49,11 @@ function create_folder(folder) {
 	let result = document.createElement("span");
 	result.classList.add("folder");
 	result.addEventListener("click", handle_folder_click, { capture: true, passive: false });
+	const header = document.createElement("h2");
+	header.append(document.createTextNode(folder.name));
+	result.append(header);
 	let container = document.createElement("span");
-	result.appendChild(container);
+	result.append(container);
 	container.addEventListener("click", handle_folder_click, { capture: true, passive: false });
 	if(typeof folder.items !== "undefined")
 		container.appendChild(create_item_list(folder.items));
